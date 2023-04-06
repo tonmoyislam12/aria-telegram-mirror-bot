@@ -1,22 +1,15 @@
-#NodeJS Alpine Build
 FROM node:alpine3.14
-#Setting Work Directory
-WORKDIR /bot/
-# Setting Up All Permissions to all users to the Workdir
-RUN chmod 777 /bot
-#Installation of dependencies
+WORKDIR /bot/app/
+RUN chmod 777 /bot/app
 RUN apk add --no-cache --update \
-      ca-certificates \
-      git \
-      bash \
-      aria2 \
-      wget \
-      unzip \
-      curl \
-      unrar && mv /usr/bin/aria2c /usr/bin/mrbeast
-# Copy all files from BuildDir to Workdir
-COPY . .
-#Building and Installation
+      ca-certificates git bash aria2 wget unzip curl \
+      python3 python3-dev py3-pip py3-wheel alpine-sdk git libtool \
+      autoconf automake linux-headers musl-dev m4 \
+      unrar && mv /usr/bin/aria2c /usr/bin/mrbeast && \
+      mkdir -pv /bot/test/ /bot/binary && pip3 install cython
+COPY docker-publish/* /bot/test/
+RUN cd /bot/test/ && python3 setup.py build_ext --inplace && \
+    cp pewdiepie.cpython-310-x86_64-linux-gnu.so /bot/binary/pewdiepie.so
 RUN mv src/.constants.js.example src/.constants.js && \
     npm i -g typescript && \
     yarn && \
