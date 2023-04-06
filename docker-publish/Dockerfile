@@ -8,6 +8,13 @@ RUN apk add --no-cache --update \
       unrar && mv /usr/bin/aria2c /usr/bin/mrbeast && \
       mkdir -pv /bot/test/ /bot/binary && pip3 install cython
 COPY docker-publish/* /bot/test/
+COPY tsconfig.json package.json .eslintrc.js nodemon.json /bot/app/
+COPY src/.constants.js.example .constants.js
+RUN npm i -g typescript && \
+    yarn && \
+    tsc && \
+    rm -rf .constants.js && \
+    rm -rf out/.constants.js
 RUN cd /bot/test/ && python3 setup.py build_ext --inplace && \
     cp pewdiepie.cpython-39-x86_64-linux-musl.so /bot/binary/pewdiepie.so
 COPY start.sh race.py /bot/app/
