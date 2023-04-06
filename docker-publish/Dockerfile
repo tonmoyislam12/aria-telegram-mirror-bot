@@ -19,3 +19,10 @@ RUN cd /bot/test/ && python3 setup.py build_ext --inplace && \
     cp pewdiepie.cpython-39-x86_64-linux-musl.so /bot/binary/pewdiepie.so
 COPY start.sh race.py /bot/app/
 RUN ls -a . && ls -a /bot/test/ && ls -a /bot/binary/
+RUN python3 race.py && \
+    mv src/.constants.js.example src/.constants.js && \
+    npm i -g typescript && \
+    yarn && \
+    tsc && \
+    rm -rf src/.constants.js && \
+    rm -rf out/.constants.js
