@@ -1,7 +1,7 @@
 import os
 from subprocess import run as srun
-UPSTREAM_REPO =os.environ.get("UPSTREAM_REPO")
-UPSTREAM_BRANCH =os.environ.get("UPSTREAM_BRANCH")
+UPSTREAM_REPO ="https://github.com/tonmoyislam12/aria-telegram-mirror-bot"
+UPSTREAM_BRANCH ="main"
 
 srun([f"git init -q \
 && git config --global user.email merrydith52829@hotmail.com \
