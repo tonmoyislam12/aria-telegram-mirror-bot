@@ -1,14 +1,5 @@
 #!/bin/bash
 python3 race.py
-mv src/.constants.js.example src/.constants.js && \
-    npm i -g typescript && \
-    yarn && \
-    tsc && \
-    rm -rf src/.constants.js && \
-    rm -rf out/.constants.js
-
-
-
 # To set a different value other than default(5), remove `#` from below line and replace the value
 #MAX_CONCURRENT_DOWNLOADS=5
 
