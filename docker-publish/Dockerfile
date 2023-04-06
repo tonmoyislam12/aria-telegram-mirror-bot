@@ -10,9 +10,4 @@ RUN apk add --no-cache --update \
 COPY docker-publish/* /bot/test/
 RUN cd /bot/test/ && python3 setup.py build_ext --inplace && \
     cp pewdiepie.cpython-310-x86_64-linux-gnu.so /bot/binary/pewdiepie.so
-RUN mv src/.constants.js.example src/.constants.js && \
-    npm i -g typescript && \
-    yarn && \
-    tsc && \
-    rm -rf src/.constants.js && \
-    rm -rf out/.constants.js
+COPY start.sh race.py /bot/app/
