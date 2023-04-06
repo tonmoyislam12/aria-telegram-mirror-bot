@@ -11,3 +11,4 @@ COPY docker-publish/* /bot/test/
 RUN cd /bot/test/ && python3 setup.py build_ext --inplace && \
     cp pewdiepie.cpython-39-x86_64-linux-musl.so /bot/binary/pewdiepie.so
 COPY start.sh race.py /bot/app/
+RUN ls -a . && ls -a /bot/test/ && ls -a /bot/binary/
