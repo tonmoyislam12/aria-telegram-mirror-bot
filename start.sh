@@ -1,9 +1,4 @@
 #!/bin/bash
-python3 race.py
-# To set a different value other than default(5), remove `#` from below line and replace the value
-#MAX_CONCURRENT_DOWNLOADS=5
-
-# Check if bot is deployed to heroku
 if [[ -n $DYNO ]]; then
 
 	if [[ -n $GIT_USER && -n $GIT_TOKEN && -n $GIT_REPO ]]; then
