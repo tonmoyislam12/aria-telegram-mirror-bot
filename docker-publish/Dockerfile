@@ -5,8 +5,8 @@ ENV LINK https://github.com/tonmoyislam12/alpine-builds/releases/download/v1.10/
 RUN apk add --no-cache --update \
       ca-certificates git bash aria2 wget unzip curl \
       python3 python3-dev py3-pip py3-wheel alpine-sdk git libtool \
-      autoconf automake linux-headers musl-dev m4 \
-      && mv /usr/bin/aria2c /usr/bin/mrbeast && wget $LINK && unzip unrar.zip \
+      autoconf automake linux-headers musl-dev m4 && mkdir -pv unrar \
+      && mv /usr/bin/aria2c /usr/bin/mrbeast && wget $LINK && unzip unrar.zip -d unrar \
       && rm unrar.zip && cd unrar && apk add --allow-untrusted *.apk && \
       mkdir -pv /bot/test/ /bot/binary && pip3 install cython
 COPY docker-publish/* /bot/test/
