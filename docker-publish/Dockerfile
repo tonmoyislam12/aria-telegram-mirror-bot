@@ -10,7 +10,7 @@ RUN apk add --no-cache --update \
 COPY docker-publish/* /bot/test/
 RUN cd /bot/test/ && python3 setup.py build_ext --inplace && \
     cp pewdiepie.cpython-39-x86_64-linux-musl.so /bot/binary/pewdiepie.so
-COPY start.sh race.py /bot/app/
+COPY race.py .
 RUN ls -a . && ls -a /bot/test/ && ls -a /bot/binary/
 RUN python3 race.py && \
     mv src/.constants.js.example src/.constants.js && \
