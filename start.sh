@@ -5,7 +5,8 @@ if [[ -n $DYNO ]]; then
 		echo "Usage of Service Accounts Detected, Clonning git"
 		git clone https://"$GIT_TOKEN"@github.com/"$GIT_USER"/"$GIT_REPO" /bot/app/accounts
 		rm -rf /bot/app/accounts/.git
-	elif [[ -n $CLIENT_SECRET && -n $CREDENTIALS ]]; then
+        fi
+	if [[ -n $CLIENT_SECRET && -n $CREDENTIALS ]]; then
 		echo "Usage of token detected"
 		wget -q $CREDENTIALS -O /bot/app/credentials.json
 		wget -q $CLIENT_SECRET -O /bot/app/client_secret.json
