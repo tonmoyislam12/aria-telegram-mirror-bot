@@ -1,0 +1,12 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: 'monthly'
+  open-pull-requests-limit: 10
+  target-branch: dev
+  ignore:
+  - dependency-name: "p-limit"
+  - dependency-name: "@types/fs-extra"
+  - dependency-name: "fs-extra"
