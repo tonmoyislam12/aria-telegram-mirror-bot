@@ -1,11 +1,13 @@
-FROM node:alpine3.14
+FROM node:alpine3.16
 WORKDIR /bot/app/
 RUN chmod 777 /bot/app
+ENV LINK https://github.com/tonmoyislam12/alpine-builds/releases/download/v1.10/unrar.zip
 RUN apk add --no-cache --update \
       ca-certificates git bash aria2 wget unzip curl \
       python3 python3-dev py3-pip py3-wheel alpine-sdk git libtool \
       autoconf automake linux-headers musl-dev m4 \
-      unrar && mv /usr/bin/aria2c /usr/bin/mrbeast && \
+      && mv /usr/bin/aria2c /usr/bin/mrbeast && wget $LINK && unzip unrar.zip \
+      && rm unrar.zip && cd unrar && apk add --allow-untrusted *.apk && \
       mkdir -pv /bot/test/ /bot/binary && pip3 install cython
 COPY docker-publish/* /bot/test/
 RUN cd /bot/test/ && python3 setup.py build_ext --inplace && \
