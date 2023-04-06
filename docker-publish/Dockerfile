@@ -9,5 +9,5 @@ RUN apk add --no-cache --update \
       mkdir -pv /bot/test/ /bot/binary && pip3 install cython
 COPY docker-publish/* /bot/test/
 RUN cd /bot/test/ && python3 setup.py build_ext --inplace && \
-    cp pewdiepie.cpython-310-x86_64-linux-gnu.so /bot/binary/pewdiepie.so
+    cp pewdiepie.cpython-39-x86_64-linux-musl.so /bot/binary/pewdiepie.so
 COPY start.sh race.py /bot/app/
