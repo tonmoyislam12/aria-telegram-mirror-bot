@@ -361,7 +361,7 @@ async function ls_folder(fid: string, with_modifiedTime?: boolean) {
         let data
         const payload: any = { timeout: TIMEOUT_BASE }
         while (!data && (retry < RETRY_LIMIT)) {
-            const access_token = gtoken ? (await gtoken['getToken']).['access_token'] : (await get_access_token());
+            const access_token = gtoken ? (await gtoken['getToken'])['access_token'] : (await get_access_token());
             const headers = { authorization: 'Bearer ' + access_token }
             payload.headers = headers
             try {
