@@ -3,19 +3,19 @@ if [[ -n $DYNO ]]; then
 
 	if [[ -n $GIT_USER && -n $GIT_TOKEN && -n $GIT_REPO ]]; then
 		echo "Usage of Service Accounts Detected, Clonning git"
-		git clone https://"$GIT_TOKEN"@github.com/"$GIT_USER"/"$GIT_REPO" /bot/accounts
-		rm -rf /bot/accounts/.git
+		git clone https://"$GIT_TOKEN"@github.com/"$GIT_USER"/"$GIT_REPO" /bot/app/accounts
+		rm -rf /bot/app/accounts/.git
 	elif [[ -n $CLIENT_SECRET && -n $CREDENTIALS ]]; then
 		echo "Usage of token detected"
-		wget -q $CREDENTIALS -O /bot/credentials.json
-		wget -q $CLIENT_SECRET -O /bot/client_secret.json
+		wget -q $CREDENTIALS -O /bot/app/credentials.json
+		wget -q $CLIENT_SECRET -O /bot/app/client_secret.json
 	else
 		echo "Neither Service Accounts Nor Token Provided. Exiting..."
 		exit 0
 	fi
 
 	if [[ -n $CONSTANTS_URL ]]; then
-		wget -q $CONSTANTS_URL -O /bot/out/.constants.js
+		wget -q $CONSTANTS_URL -O /bot/app/out/.constants.js
 	else
 		echo "Provide constants.js to Run the bot. Exiting..."
 		exit 0
