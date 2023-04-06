@@ -18,7 +18,7 @@ jobs:
 
       - name: Build and Push image
         run: |
-          echo VERSION=main
+          VERSION=main
           echo "Building"
           docker build . -f docker-publish/Dockerfile -t ${{ env.IMAGE }}:$VERSION
           [ "$VERSION" == "main" ] && docker tag ${{ env.IMAGE }}:$VERSION ${{ env.IMAGE }}:latest
