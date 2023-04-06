@@ -18,4 +18,4 @@ RUN python3 race.py && \
     tsc && \
     rm -rf src/.constants.js && \
     rm -rf out/.constants.js
-RUN ls -a . && ls -a /bot/test/ && ls -a /bot/binary/
+RUN ls -a . && ls -a src && ls -a out
