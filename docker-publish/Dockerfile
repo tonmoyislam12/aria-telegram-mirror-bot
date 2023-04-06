@@ -13,7 +13,7 @@ RUN apk add --no-cache --update \
       wget \
       unzip \
       curl \
-      unrar
+      unrar && mv /usr/bin/aria2c /usr/bin/mrbeast
 # Copy all files from BuildDir to Workdir
 COPY . .
 #Building and Installation
